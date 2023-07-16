@@ -1,0 +1,6 @@
+#!/bin/bash
+set -x
+
+rpkg spec --outdir "$PWD/${1}"
+dnf builddep -y "$PWD/${1}"/*.spec
+rpkg local --outdir "$PWD/${1}"

@@ -1,0 +1,23 @@
+name: rpkg
+description: create an rpm package using the rpkg utility
+inputs:
+  command:
+    description: rpkg subcommand to run
+    default: 'local'
+  extra-args:
+    description: extra arguments to pass to rpkg separated by newline
+    required: false
+  output-dir:
+    description: rpkg --outdir argument
+    required: false
+    default: 'output'
+outputs:
+  rpkg-output-dir: # id of output
+    description: output directory for build artifacts
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.rpkg-command }}
+    - ${{ inputs.rpks-extra-args }}
+
